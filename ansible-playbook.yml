@@ -24,12 +24,19 @@
     - name: Download Minikube binary
       ansible.builtin.command:
         cmd: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-        changed_when: true
+
+    - name: Run PWD command and display output
+      ansible.builtin.command:
+        cmd: pwd
+      register: pwd_output
+
+    - name: Display PWD output
+      ansible.builtin.debug:
+        msg: "Current directory: {{ pwd_output.stdout }}"
 
     - name: Install Minikube
       ansible.builtin.command:
         cmd: install minikube-linux-amd64 /usr/local/bin/minikube
-        changed_when: true
 
     - name: Remove Minikube binary
       ansible.builtin.file:
