@@ -43,4 +43,21 @@
     - name: Start Minikube
       ansible.builtin.command:
         cmd: minikube start
-  
+
+- name: Deploy image from Dockerhub to Kubernetes
+  hosts: localhost
+  user: ubuntu
+  become: true
+
+  tasks:
+    - name: Download image from Dockerhub
+      ansible.builtin.command:
+        cmd: kubectl create deployment cw2-server --image=kymmie/cw2-server:latest
+
+    - name: Create a NodePort service
+      ansible.builtin.command:
+        cmd: kubectl expose deployment/cw2-server --type="NodePort" --port 8080 --name node-port-service
+
+    - name: Scale the deployment
+      ansible.builtin.command:
+        cmd: kubectl scale deployment/cw2-server --replicas=3
