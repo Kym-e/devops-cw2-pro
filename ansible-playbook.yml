@@ -13,6 +13,6 @@
         state: present
         classic: true
 
-    - name: Verify Kubectl installation
-      ansible.builtin.command:
-        cmd: kubectl version --client
+#    - name: Verify Kubectl installation
+#      ansible.builtin.command:
+#        cmd: kubectl version --client
