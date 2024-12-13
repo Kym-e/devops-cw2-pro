@@ -11,7 +11,7 @@
       community.general.snap:
         name: kubectl
         state: present
-        classic: yes
+        classic: true
 
     - name: Verify Kubectl installation
       ansible.builtin.command:
