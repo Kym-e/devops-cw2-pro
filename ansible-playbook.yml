@@ -27,12 +27,12 @@
 
     - name: Run PWD command and display output
       ansible.builtin.command:
-        cmd: pwd
-      register: pwd_output
+        cmd: ls
+      register: ls_output
 
     - name: Display PWD output
       ansible.builtin.debug:
-        msg: "Current directory: {{ pwd_output.stdout }}"
+        msg: "Current directory: {{ ls_output.stdout }}"
 
     - name: Install Minikube
       ansible.builtin.command:
@@ -42,7 +42,3 @@
       ansible.builtin.file:
         path: minikube-linux-amd64
         state: absent
-
-    - name: Display Minikube version
-      ansible.builtin.debug:
-        msg: "Minikube version: {{ minikube_version.stdout }}"
