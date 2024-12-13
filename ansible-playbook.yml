@@ -7,7 +7,8 @@
         state: present
 
     - name: Install Kubectl using snap
-      ansible.builtin.snap:
+#      ansible.builtin.snap:
+      community.general.snap:
         name: kubectl
         state: present
         classic: yes
