@@ -12,3 +12,18 @@
         state: present
         classic: true
 
+- name: Install Minikube
+  hosts: all
+  tasks:
+    - name: Download Minikube binary
+      ansible.builtin.shell:
+        cmd: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+
+    - name: Install Minikube
+      ansible.builtin.shell:
+        cmd: install minikube-linux-amd64 /usr/local/bin/minikube
+
+    - name: Remove Minikube binary
+      ansible.builtin.file:
+        path: minikube-linux-amd64
+        state: absent
