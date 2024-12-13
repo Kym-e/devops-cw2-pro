@@ -22,14 +22,20 @@
 
   tasks:
     - name: Download Minikube binary
-      ansible.builtin.shell:
+      ansible.builtin.command:
         cmd: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        changed_when: true
 
     - name: Install Minikube
-      ansible.builtin.shell:
+      ansible.builtin.command:
         cmd: install minikube-linux-amd64 /usr/local/bin/minikube
+        changed_when: true
 
     - name: Remove Minikube binary
       ansible.builtin.file:
         path: minikube-linux-amd64
         state: absent
+
+    - name: Display Minikube version
+      ansible.builtin.debug:
+        msg: "Minikube version: {{ minikube_version.stdout }}"
