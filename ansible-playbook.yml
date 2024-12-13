@@ -1,0 +1,17 @@
+- name: Install Kubectl
+  hosts: all
+  tasks:
+    - name: Ensure snapd is installed
+      ansible.builtin.apt:
+        name: snapd
+        state: present
+
+    - name: Install Kubectl using snap
+      ansible.builtin.snap:
+        name: kubectl
+        state: present
+        classic: yes
+
+    - name: Verify Kubectl installation
+      ansible.builtin.command:
+        cmd: kubectl version --client
