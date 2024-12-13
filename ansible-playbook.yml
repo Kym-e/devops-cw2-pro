@@ -37,7 +37,7 @@
 - name: Start Minikube
   hosts: localhost
   user: ubuntu
-  become: true
+#  become: true
 
   tasks:
     - name: Start Minikube
