@@ -47,7 +47,7 @@
 - name: Deploy image from Dockerhub to Kubernetes
   hosts: localhost
   user: ubuntu
-  become: true
+#  become: true
 
   tasks:
     - name: Download image from Dockerhub
