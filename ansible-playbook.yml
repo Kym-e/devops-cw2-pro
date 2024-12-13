@@ -1,5 +1,8 @@
 - name: Install Kubectl
   hosts: localhost
+  user: ubuntu
+  become: yes
+
   tasks:
     - name: Ensure snapd is installed
       ansible.builtin.apt:
@@ -14,6 +17,9 @@
 
 - name: Install Minikube
   hosts: localhost
+  user: ubuntu
+  become: yes
+
   tasks:
     - name: Download Minikube binary
       ansible.builtin.shell:
@@ -22,7 +28,6 @@
     - name: Install Minikube
       ansible.builtin.shell:
         cmd: install minikube-linux-amd64 /usr/local/bin/minikube
-        become: yes
 
     - name: Remove Minikube binary
       ansible.builtin.file:
