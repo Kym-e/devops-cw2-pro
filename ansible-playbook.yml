@@ -13,7 +13,7 @@
         classic: true
 
 - name: Install Minikube
-  hosts: all
+  hosts: localhost
   tasks:
     - name: Download Minikube binary
       ansible.builtin.shell:
