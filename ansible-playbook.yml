@@ -33,3 +33,14 @@
       ansible.builtin.file:
         path: minikube-linux-amd64
         state: absent
+        
+- name: Start Minikube
+  hosts: localhost
+  user: ubuntu
+  become: true
+
+  tasks:
+    - name: Start Minikube
+      ansible.builtin.command:
+        cmd: minikube start
+  
