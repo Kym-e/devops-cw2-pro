@@ -25,15 +25,6 @@
       ansible.builtin.command:
         cmd: curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
-    - name: Run PWD command and display output
-      ansible.builtin.command:
-        cmd: ls
-      register: ls_output
-
-    - name: Display PWD output
-      ansible.builtin.debug:
-        msg: "Current directory: {{ ls_output.stdout }}"
-
     - name: Install Minikube
       ansible.builtin.command:
         cmd: install minikube-linux-amd64 /usr/local/bin/minikube
