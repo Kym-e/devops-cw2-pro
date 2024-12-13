@@ -22,7 +22,7 @@
     - name: Install Minikube
       ansible.builtin.shell:
         cmd: install minikube-linux-amd64 /usr/local/bin/minikube
-        become: true
+        become: yes
 
     - name: Remove Minikube binary
       ansible.builtin.file:
