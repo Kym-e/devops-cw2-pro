@@ -52,7 +52,7 @@
   tasks:
     - name: Download image from Dockerhub
       ansible.builtin.command:
-        cmd: kubectl create deployment cw2-server --image=kymmie/cw2-server
+        cmd: kubectl create deployment cw2-server --image=kymmie/cw2-server:1.1
 
     - name: Create a NodePort service
       ansible.builtin.command:
